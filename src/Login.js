@@ -15,7 +15,7 @@ function Login() {
         setErrors(Validation(values));
         if (errors.email === "" && errors.password === "") {
             debugger
-            axios.post('https://keep-notes-jade.vercel.app/login', {
+            axios.post('https://keepnotes-backend-sandy.vercel.app/login', {
                 email: values.email, // Assuming values is an object with email and password
                 password: values.password
             })

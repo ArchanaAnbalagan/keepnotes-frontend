@@ -25,7 +25,7 @@ function Home() {
 
     const fetchNotes = async () => {
         try {
-            const response = await axios.get(`https://keep-notes-jade.vercel.app/notesget/${user_id}`);
+            const response = await axios.get(`https://keepnotes-backend-sandy.vercel.app/notesget/${user_id}`);
             setNotes(response.data); // Set the fetched notes to state
         } catch (err) {
             console.error("Error fetching notes:", err);
@@ -50,7 +50,7 @@ function Home() {
     const handleSubmit = async (title, content) => {
         if (title !== "" && content !== "") {
             try {
-                const response = await axios.post('https://keep-notes-jade.vercel.app/notespost', {
+                const response = await axios.post('https://keepnotes-backend-sandy.vercel.app/notespost', {
                     note_title: title,
                     note_content: content,
                     user_id:user_id
@@ -79,7 +79,7 @@ function Home() {
     const handleUpdate = async (id, title, content) => {
         if (title !== "" && content !== "") {
             try {
-                const response = await axios.put(`https://keep-notes-jade.vercel.app/notes/${id}`, {
+                const response = await axios.put(`https://keepnotes-backend-sandy.vercel.app/notes/${id}`, {
                     note_title: title,
                     note_content: content,
                     user_id:user_id
@@ -99,7 +99,7 @@ function Home() {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`https://keep-notes-jade.vercel.app/notes/${id}`, {
+            await axios.delete(`https://keepnotes-backend-sandy.vercel.app/notes/${id}`, {
                 data: { user_id: user_id } // Send user_id in the data property
             });
             fetchNotes(); // Fetch notes again to update the list
