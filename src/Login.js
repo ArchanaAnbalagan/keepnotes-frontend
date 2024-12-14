@@ -49,7 +49,7 @@ function Login() {
         debugger
 
         try {
-            const response = await axios.post('/login', credentials);
+            const response = await axios.post('https://keepnotes-backend-sandy.vercel.app/login', credentials);
             if (response.data.message == "success") {
 
                 navigate('/home', { state: { name: response.data.name, user_id: response.data.id } });
