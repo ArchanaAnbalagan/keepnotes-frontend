@@ -20,7 +20,7 @@ function Signup() {
         // Check if there are no errors
         if (!validationErrors.name && !validationErrors.email && !validationErrors.password) {
             try {
-                const response = await axios.post('https://keepnotes-backend-sandy.vercel.app/API/signup', {
+                const response = await axios.post('/API/signup', {
                     name: values.name,
                     email: values.email,
                     password: values.password
