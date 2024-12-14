@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation , useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Modal from './components/Modal';
 import './style.css';
 import axios from 'axios';
+import icon from './assets/icon-1.png';
+import arrow from './assets/arrow.png';
+import document from './assets/document.jpeg';
 
 
 function Home() {
     const currentLocation = useLocation(); // Get the current location
-    const name = currentLocation.state ? currentLocation.state.name : "Guest"; 
+    const name = currentLocation.state ? currentLocation.state.name : "Guest";
     const user_id = currentLocation.state ? currentLocation.state.user_id : 0;
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
     const [isModalOpen, setIsModalOpen] = useState(false); // State to manage modal visibility
     const [values, setValues] = useState({
         note_title: '',
@@ -56,7 +59,7 @@ function Home() {
             };
             try {
                 const response = await axios.post('https://keepnotes-backend-sandy.vercel.app/notespost', credentials); // Use HTTP if not using SSL
-    
+
                 console.log(response);
                 if (response.data) {
                     closeModal();
@@ -83,7 +86,7 @@ function Home() {
                 const response = await axios.put(`https://keepnotes-backend-sandy.vercel.app/notes/${id}`, {
                     note_title: title,
                     note_content: content,
-                    user_id:user_id
+                    user_id: user_id
                 });
 
                 console.log(response);
@@ -131,35 +134,56 @@ function Home() {
 
     return (
         <div>
-            <div className='fixed top-0 d-flex backroundblue justify-content-between px-5 align-items-center p-3 font-weight-bold custom-font'>
-                <div className="p-2">Keep Notes</div>
-                <div className="d-flex p-2">
-                    <div className='px-1'>www</div>
-                    <div className='px-1'>www</div>
-                    <div className='px-1'>www</div>
-                    <div className='px-1' onClick={handleLogout}>www</div>
+            <div className='fixed top-0 d-flex backroundblue justify-content-between   align-items-center  font-weight-bold custom-font' style={{ paddingLeft: "200px", paddingRight: "200px" }} >
+                <div className="p-2  " style={{ fontSize: "20px", fontWeight: 700 }}>Keep Notes</div>
+                <div className="d-flex p-2 " style={{ fontSize: "15px" }}>
+                    <div className='px-2' style={{ fontWeight: 700 }}>About</div>
+                    <div className='px-2' style={{ fontWeight: 700 }}>Notes</div>
+                    <div className='px-2' style={{ fontWeight: 700 }}>Account</div>
+                    <div className='px-2' style={{ fontWeight: 700 }} onClick={handleLogout}>Logout</div>
                 </div>
             </div>
 
             <div>
-                <div className='bgpink vh-100 overflow-hidden justify-content-center align-items-center'>
-                    <div className='container'>
-                        <h2>Good Morning {name}!</h2>
-                        <div>{user_id}</div>
+                <div className='bgpink vh-100 overflow-hidden justify-content-center align-items-center family'>
+                    <div className='container ' style={{ paddingLeft: "100px", paddingRight: "100px" }}>
+                        <div className='py-5' style={{ color: "#8B4513", fontWeight: 900, fontSize: "large" }}>  <h2>Good Morning {name}!</h2></div>
+
+                        {/* <div>{user_id}</div> */}
                         <div>
                             {notes.length === 0 ? (
-                                <p>No notes available.</p>
+                                <div>
+                                <div className='d-flex
+                                justify-content-center align-items-center'> 
+                                  <img src={document}
+                                   alt="Description of image" 
+                                   className='mx-5 l ' 
+                                  style={{width:"200px",height:"200px"}}
+                                    />
+                                   
+                                </div>
+                                 <div className='d-flex
+                                justify-content-center align-items-center p-2'
+                                style={{fontSize:"12px",fontWeight:"bold"}}
+                                 >No Notes Available</div>
+                                 </div>
+
                             ) : (
                                 <div className='row'>
                                     {notes.map(note => (
                                         <div key={note.note_id} className='col-md-4 mb-4'>
-                                            <div className='card' onClick={() => openModal(note)}>
-                                                <div className='card-body'>
-                                                    <h5 className='card-title'>{note.note_title}</h5>
-                                                    <p className='card-text'>{note.note_content}</p>
+                                            <div className='card ' onClick={() => openModal(note)}>
+                                                <div className='bcolor rounded'>
+                                                    <div className='headercolor d-flex justify-content-between' style={{ color: "brown", borderBottom: "2px solid #b47a51" }}>
+                                                        <div style={{ color: "#8B4513", fontWeight: 600 }} className='p-2 px-4'>{note.note_title}</div>
+                                                        <div style={{borderRadius:"20px"}} className='p-2 d-flex text-end justify-content-end'><img src={arrow} alt="Description of image" className='rounded-circle' style={{ width: '20px', height: '20px' ,borderRadious:"10px"}} /></div>
+                                                       
+                                                    </div>
+                                                  
+                                                    <p className='card-text py-3 px-4'>{note.note_content}</p>
                                                     <p className='card-text'>
-                                                        <small className='text-muted'>
-                                                            Created on: {new Date(note.created_on).toLocaleString()}
+                                                        <small className='text-muted text-end p-2 d-flex justify-content-end ' style={{fontSize:"10px"}}>
+                                                           {new Date(note.created_on).toLocaleString()}
                                                         </small>
                                                     </p>
                                                 </div>
@@ -170,8 +194,10 @@ function Home() {
                             )}
                         </div>
                     </div>
-                    <div className='d-flex justify-content-end mx-6'>
-                        <button onClick={() => openModal()} className='mx-5'>Add Note</button>
+                    <div className='d-flex justify-content-end mx-6 rounded-circle ' onClick={() => openModal()}
+                    >
+                        <img src={icon} alt="Description of image" className='mx-5 l ' style={{ width: '40px', height: '40px', borderRadius: "50px" }} />
+                        {/* <button className='mx-5'>Add Note</button> */}
                     </div>
                 </div>
             </div>

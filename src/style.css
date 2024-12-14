@@ -1,25 +1,25 @@
 .backroundblue{
-    background-color: rgb(147, 211, 211);
+    background-color: rgb(224, 220, 219);
 }
 
 .bgpink{
     background-color: rgb(248, 233, 229);
 }
 .custom-font {
-    font-family: "Ubuntu", sans-serif;
-    font-weight: 600;
+    font-family: "Proza Libre", sans-serif;
+    font-weight: 400;
     font-style: normal;
-    color: rgb(42, 145, 145);
+    color: rgb(39, 112, 112);
 }
 .family{
-    font-family: "Ubuntu", sans-serif;
+    font-family: "Proza Libre", sans-serif;
 }
 .bcolor{
     
-    border: 2px solid rgba(182, 147, 147, 0.925);
+    border: 2px solid #b47a51;
 }
 .headercolor{
-    background-color: rgb(185, 156, 148);
+    background-color: #FFDEAD;
 }
 .ff{
     font-size: larger;

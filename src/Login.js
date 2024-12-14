@@ -42,11 +42,13 @@ function Login() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        const validationErrors = Validation(values);
+        setErrors(validationErrors);
         const credentials = {
             email: values.email, // Assuming values is an object with email and password
             password: values.password
         };
-        debugger
+        if (!validationErrors.email && !validationErrors.password) {
 
         try {
             const response = await axios.post('https://keepnotes-backend-sandy.vercel.app/login', credentials);
@@ -62,7 +64,7 @@ function Login() {
 
         } catch (error) {
             console.error('Login failed:', error.response ? error.response.data : error.message);
-        }
+        }}
     };
     const handleInput = (event) => {
         setValues(prev => ({ ...prev, [event.target.name]: event.target.value })); // Store as string
@@ -71,56 +73,61 @@ function Login() {
     return (
 
         <div>
-            <div className='fixed top-0 d-flex backroundblue justify-content-between px-5  align-items-center  p-3 font-weight-bold custom-font' >
-                <div className="p-2">Keep Notes</div>
-                <div className="d-flex p-2">
-                    <div className='px-1'>www</div>
-                    <div className='px-1'>www</div>
-                    <div className='px-1'>www</div>
-                    <div className='px-1'>www</div>
+              <div className='fixed top-0 d-flex backroundblue justify-content-between   align-items-center  font-weight-bold custom-font' style={{ paddingLeft: "200px", paddingRight: "160px"
+
+               }} >
+                <div className="p-2  " style={{ fontSize: "20px", fontWeight: 700 }}>Keep Notes</div>
+                <div className="d-flex p-2 " style={{ fontSize: "15px" }}>
+                    <div className='px-2' style={{ fontWeight: 700 }}>About</div>
+                    <div className='px-2' style={{ fontWeight: 700 }}>Notes</div>
+                    <div className='px-2' style={{ fontWeight: 700 }}>Account</div>
+                    <div className='px-2' style={{ fontWeight: 700 }}>Logout</div>
                 </div>
             </div>
 
             <div>
-                <div className='bgpink vh-100 overflow-hidden d-flex justify-content-center  align-items-center'>
-                    <div className='rounded w-25 bcolor family'>
-                        <div className='headercolor d-flex justify-content-between'>
-                            <div className='p-2 mx-4' style={{ color: "brown" }}>Login</div>
+                <div className='bgpink vh-100  d-flex justify-content-center  align-items-center family'>
+                    <div className='rounded w-25 bcolor family mb-5'>
+                        <div className='headercolor d-flex justify-content-between' style={{ color: "brown", borderBottom: "2px solid #b47a51" }}>
+                        <div style={{ color: "#8B4513",fontWeight:600 }} className='p-2 px-4'>Login</div>
                             <div className='d-flex'>
                                 <div className='text-danger rounded'> </div>
                             </div>
                         </div>
                         <form action="" onSubmit={handleSubmit}>
-                            <div className='text-center p-2 ' style={{ color: "brown", fontWeight: "bold", fontSize: "larger" }}>Login</div>
+                            <div className='text-center p-2 ' style={{ color: "#8B4513", fontWeight: "bold", fontSize: "20px" }}>Login</div>
                             <div className='mb-3 mx-4'>
-                                <label htmlFor="email" style={{ color: "brown", fontSize: "medium", fontWeight: "bold", }}>
+                                <label htmlFor="email" className='py-1' style={{ color: "#8B4513", fontSize: "small", fontWeight: 700, }}>
                                     Email
                                 </label>
                                 <br />
                                 <input type="email"
-                                    placeholder='Enter Email'
-                                    className=' rounded bcolor'
+                                    placeholder=' Email'
+                                    className=' rounded bcolor  p-2'
+                                    style={{fontSize:"14px",width:"100%"}}
                                     onChange={handleInput}
                                     name='email'
+                                    
                                 />
-                                {errors.email && <span className='text-danger'>{errors.email}</span>}
+                                {errors.email && <span className='text-danger ' style={{fontSize:"12px"}}>{errors.email}</span>}
                             </div>
                             <div className='mb-3 mx-4'>
-                                <label htmlFor="password" style={{ color: "brown", fontSize: "medium", fontWeight: "bold", }}>
+                                <label htmlFor="password" className='py-1'  style={{ color: "#8B4513", fontSize: "small", fontWeight: 700, }}>
                                     Password
                                 </label>
                                 <br />
                                 <input type="password
-                    "   onChange={handleInput} placeholder='Enter Password'
-                                    className=' rounded bcolor'
+                    "   onChange={handleInput} placeholder=' Password'
+                    className=' rounded bcolor  p-2'
+                    style={{fontSize:"14px",width:"100%"}}
                                     name='password'
                                 />
-                                {errors.password && <span className='text-danger'>{errors.password}</span>}
+                                {errors.password && <span className='text-danger ' style={{fontSize:"12px"}}>{errors.password}</span>}
                             </div>
-                            <div className='d-flex mx-4'>  <button type='submit' className='btn w-100 m-3 ' style={{ backgroundColor: "rgb(185, 156, 148)", color: "rgb(170, 111, 95)", fontSize: "bold" }}>
+                            <div className='d-flex mx-3'>  <button type='submit' className='btn w-100 m-3 ' style={{ backgroundColor: "#FFDEAD", color: "#8B4513", fontSize: "14px",fontWeight:"bold" }}>
                                 Login
                             </button>
-                                <Link to="/signup" className='btn  w-100 m-3 text-decoration-none' style={{ backgroundColor: "rgb(147, 211, 211)", color: "rgb(42, 145, 145)", fontSize: "bold" }}
+                                <Link to="/signup" className='btn  w-100 m-3 text-decoration-none' style={{ backgroundColor: "rgb(147, 211, 211)", color: "rgb(33, 109, 109)",fontSize: "14px",fontWeight:"bold"}}
                                 >
                                     Register
                                 </Link></div>

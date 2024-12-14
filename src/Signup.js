@@ -55,7 +55,7 @@ function Signup() {
         //                     name='name'
         //                     onChange={handleInput}
         //                 />
-        //                 {errors.name && <span className='text-danger'>{errors.name}</span>}
+        //                 {errors.name && <span className='text-danger ' style={{fontSize:"14px"}} >{errors.name}</span>}
         //             </div>
         //             <div className='mb-3'>
         //                 <label htmlFor="email">
@@ -67,7 +67,7 @@ function Signup() {
         //                     name='email'
         //                     onChange={handleInput}
         //                 />
-        //                  {errors.email && <span className='text-danger'>{errors.email}</span>}
+        //                  {errors.email && <span className='text-danger ' style={{fontSize:"14px"}} >{errors.email}</span>}
         //             </div>
         //             <div className='mb-3'>
         //                 <label htmlFor="password">
@@ -79,7 +79,7 @@ function Signup() {
         //                     className='form-control rounded-0'
         //                     onChange={handleInput}
         //                 />
-        //                  {errors.email && <span className='text-danger'>{errors.email}</span>}
+        //                  {errors.email && <span className='text-danger ' style={{fontSize:"14px"}} >{errors.email}</span>}
         //             </div>
         //             <button className='btn btn-success w-100 my-2' type='submit'
         //             >Signup</button>
@@ -91,69 +91,79 @@ function Signup() {
         //     </div>
         // </div>
         <div>
-            <div className='fixed top-0 d-flex backroundblue justify-content-between px-5  align-items-center  p-3 font-weight-bold custom-font' >
-                <div className="p-2">Keep Notes</div>
-                <div className="d-flex p-2">
-                    <div className='px-1'>www</div>
-                    <div className='px-1'>www</div>
-                    <div className='px-1'>www</div>
-                    <div className='px-1'>www</div>
+                <div className='fixed top-0 d-flex backroundblue justify-content-between   align-items-center  font-weight-bold custom-font' style={{ paddingLeft: "200px", paddingRight: "160px"
+
+                 }} >
+                <div className="p-2  " style={{ fontSize: "20px", fontWeight: 700 }}>Keep Notes</div>
+                <div className="d-flex p-2 " style={{ fontSize: "15px" }}>
+                    <div className='px-2' style={{ fontWeight: 700 }}>About</div>
+                    <div className='px-2' style={{ fontWeight: 700 }}>Notes</div>
+                    <div className='px-2' style={{ fontWeight: 700 }}>Account</div>
+                    <div className='px-2' style={{ fontWeight: 700 }}>Logout</div>
                 </div>
             </div>
 
             <div>
                 <div className='bgpink vh-100 overflow-hidden d-flex justify-content-center  align-items-center'>
                     <div className='rounded w-25 bcolor family'>
-                        <div className='headercolor d-flex justify-content-between'>
-                            <div className='p-2 mx-4' style={{ color: "brown" }}>SIGN UP</div>
+                    <div className='headercolor d-flex justify-content-between' style={{ color: "brown", borderBottom: "2px solid #b47a51" }}>
+                        <div style={{ color: "#8B4513",fontWeight:600 }} className='p-2 px-4'>Sign In</div>
                             <div className='d-flex'>
                                 <div className='text-danger rounded'> </div>
                             </div>
                         </div>
                         <form action="" onSubmit={handleSubmit}>
-                            <div className='text-center p-2 ' style={{ color: "brown", fontWeight: "bold", fontSize: "larger" }}>SIGN UP</div>
+                        <div className='text-center p-2 ' style={{ color: "#8B4513", fontWeight: "bold", fontSize: "20px" }}>
+                            Sign In
+                        </div>
                             <div className='mb-3 mx-4'>
-                                <label htmlFor="name" style={{ color: "brown", fontSize: "medium", fontWeight: "bold", }}>
+                                <label htmlFor="name" style={{ color: "#8B4513", fontSize: "small", fontWeight: 700, }}>
                                     Name
                                 </label>
                                 <br />
                                 <input type="name"
                                     placeholder='Enter Name'
-                                    className=' rounded bcolor'
+                                    className=' rounded bcolor  p-2'
+                                    style={{fontSize:"14px",width:"100%"}}
                                     onChange={handleInput}
                                     name='name'
                                 />
-                                {errors.name && <span className='text-danger'>{errors.name}</span>}
+                                {errors.name && <span className='text-danger ' style={{fontSize:"14px"}} >{errors.name}</span>}
                             </div>
                             <div className='mb-3 mx-4'>
-                                <label htmlFor="email" style={{ color: "brown", fontSize: "medium", fontWeight: "bold", }}>
+                                <label htmlFor="email" className='py-1' style={{ color: "#8B4513", fontSize: "small", fontWeight: 700, }}>
                                     Email
                                 </label>
                                 <br />
                                 <input type="email"
-                                    placeholder='Enter Email'
-                                    className=' rounded bcolor'
+                                    placeholder=' Email'
+                                    className=' rounded bcolor  p-2'
+                                    style={{fontSize:"14px",width:"100%"}}
                                     onChange={handleInput}
                                     name='email'
+                                    
                                 />
-                                {errors.email && <span className='text-danger'>{errors.email}</span>}
+                                {errors.email && <span className='text-danger ' style={{fontSize:"14px"}} >{errors.email}</span>}
                             </div>
                             <div className='mb-3 mx-4'>
-                                <label htmlFor="password" style={{ color: "brown", fontSize: "medium", fontWeight: "bold", }}>
+                                <label htmlFor="password" style={{ color: "#8B4513", fontSize: "small", fontWeight: 700, }}>
                                     Password
                                 </label>
                                 <br />
                                 <input type="password
                             "   onChange={handleInput} placeholder='Enter Password'
-                                    className=' rounded bcolor'
+                            className=' rounded bcolor  p-2'
+                            style={{fontSize:"14px",width:"100%"}}
                                     name='password'
                                 />
-                                {errors.password && <span className='text-danger'>{errors.password}</span>}
+                                {errors.password && <span className='text-danger ' style={{fontSize:"14px"}} >{errors.password}</span>}
                             </div>
-                            <div className='d-flex mx-4'>  <button type='submit' className='btn w-100 m-3 ' style={{ backgroundColor: "rgb(185, 156, 148)", color: "rgb(170, 111, 95)", fontSize: "bold" }}>
+                            <div className='d-flex mx-4'>  <button type='submit' className='btn  w-100 m-3 text-decoration-none' style={{ backgroundColor: "#33ff99"
+                            , color: "rgb(18, 112, 31)",fontSize: "14px",fontWeight:"bold"}}
+                            >
                                 Regiter
                             </button>
-                                <Link to="/" className='btn  w-100 m-3 text-decoration-none' style={{ backgroundColor: "rgb(147, 211, 211)", color: "rgb(42, 145, 145)", fontSize: "bold" }}
+                                <Link to="/"  className='btn w-100 m-3 ' style={{ backgroundColor: "#FFDEAD", color: "#8B4513", fontSize: "14px",fontWeight:"bold" }}
                                 >
                                     Login
                                 </Link></div>
