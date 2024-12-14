@@ -25,7 +25,7 @@ function Home() {
 
     const fetchNotes = async () => {
         try {
-            const response = await axios.get(`https://keepnotes-backend-sandy.vercel.app/notesget/${user_id}`);
+            const response = await axios.get(`https://keepnotes-backend-sandy.vercel.app/API/notesget/${user_id}`);
             setNotes(response.data); // Set the fetched notes to state
         } catch (err) {
             console.error("Error fetching notes:", err);
