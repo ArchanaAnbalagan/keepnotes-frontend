@@ -49,20 +49,21 @@ function Home() {
 
     const handleSubmit = async (title, content) => {
         if (title !== "" && content !== "") {
+            const credentials = {
+                note_title: title,
+                note_content: content,
+                user_id: user_id
+            };
             try {
-                const response = await axios.post('https://keepnotes-backend-sandy.vercel.app/notespost', {
-                    note_title: title,
-                    note_content: content,
-                    user_id:user_id
-                });
-
+                const response = await axios.post('https://keepnotes-backend-sandy.vercel.app/notespost', credentials); // Use HTTP if not using SSL
+    
                 console.log(response);
                 if (response.data) {
                     closeModal();
                     fetchNotes(); // Fetch notes again to update the list
                 }
             } catch (err) {
-                console.error("Error during saving note:", err);
+                console.error("Error during saving note:", err.response ? err.response.data : err.message);
                 alert("An error occurred during saving the note. Please try again.");
             }
         }
